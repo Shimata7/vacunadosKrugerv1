@@ -35,8 +35,6 @@ async function vacunado() {
     }else{
         document.getElementById("mas").innerHTML="";
     }
-
-
 }
 function registrar(){
     let usuario =[]
@@ -65,6 +63,4 @@ function registrar(){
     if(confirm){
         alert(usuario.fecha_nacimiento+' | '+usuario.direccion+' | '+usuario.celular+' | '+usuario.tipo_vacuna+' | '+usuario.fecha_vacuna+' | '+usuario.dosis)
     }
-
-
 }

@@ -20,7 +20,7 @@ public class AuthenticationController {
 
     @Autowired
     private JWTUtil jwtUtil;
-
+    //Comprueba que el usuario exista y se regresa el token JWT junto con el rol e id del usuario
     @RequestMapping(value= "api/login", method = RequestMethod.POST)
     public List<String> login(@RequestBody Usuario usuario){
         Usuario userlog = usuarioDao.login(usuario).get(0);

@@ -23,4 +23,6 @@ public interface UsuarioDao {
     List<Usuario> getUsuariosByDateRange(String dateStart, String dateEnd);
 
     List<Usuario> login(Usuario usuario);
+
+    boolean updateUsuarioByEmployee(Usuario usuario);
 }
