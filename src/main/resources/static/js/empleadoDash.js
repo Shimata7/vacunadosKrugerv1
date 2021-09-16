@@ -13,26 +13,27 @@ async function vacunado() {
     const vacunas = await request.json();
     let estadoVacuna = document.getElementById("estado_vacuna")
     if (estadoVacuna.checked == true) {
-        let divHTML = '<label>Tipo de vacuna</label><select class="form-select" aria-label="Default select example">'
+        let divHTML = '<div class="wrap-input100 "><label>Tipo de vacuna</label><select class="form-select" aria-label="Default select example" id="tipo_vacuna">'
         + '<option selected>Selecciona el tipo de vacuna</option>';
         for (let vacuna of vacunas) {
             let vacunasHTML = '<option value="' + vacuna.id + '">' + vacuna.tipo_vacuna + '</option>';
             divHTML += vacunasHTML;
         }
-        divHTML += '<div class="wrap-input100 validate-input" data-validate="Ingresa la fecha de vacunación">'
+        divHTML += '</div>'
+        +'<div class="wrap-input100 validate-input" data-validate="Ingresa la fecha de vacunación">'        
         +'<label>Fecha de vacunación</label>'
         +'<input class="input100" type="date" data-date-format="YYYY MMMM DD" name="fecha_vacuna" id="fecha_vacuna">'
-        +'<span class="focus-input100" data-placeholder=""></span>'
-        +'</div><label>Número de dosis</label>'
-        +'<select class="form-select" aria-label="Default select example">'
+        +'<span class="focus-input100" data-placeholder=""></span></div>'
+        +'<div class="wrap-input100 "><label>Número de dosis</label>'
+        +'<select class="form-select" aria-label="Default select example" id="dosis">'
         +'<option selected>Selecciona número de dosis</option>'
         +'<option value="1">1</option>'
-        +'<option value="2">2</option>'
+        +'<option value="2">2</option></div>'
 
-        $('#mas').append(divHTML);
+        document.getElementById("mas").insertAdjacentHTML('beforeend',divHTML);
 
     }else{
-        $('#mas').append('');
+        document.getElementById("mas").innerHTML="";
     }
 
 
@@ -48,22 +49,21 @@ function registrar(){
         usuario.tipo_vacuna = document.getElementById("tipo_vacuna").value;
         usuario.fecha_vacuna = document.getElementById("fecha_vacuna").value;
         usuario.dosis = document.getElementById("dosis").value;
-        if(usuario.fecha_nacimiento.length==0 ||usuario.direccion.length==0 || usuario.celular.length==0 ){ 
+        if(usuario.fecha_nacimiento.length==0 ||usuario.direccion.length==0 || usuario.celular.length==0 || usuario.tipo_vacuna.length==0
+            || usuario.fecha_vacuna.length==0 || usuario.dosis.length==0 ){ 
             alert ('Debe completar todos los campos')
         }else{
             confirm=true;
         }
     }else{
-        if(usuario.fecha_nacimiento.length==0 ||usuario.direccion.length==0 || usuario.celular.length==0 || usuario.tipo_vacuna.length==0
-            || usuario.fecha_vacuna.length==0 || usuario.dosis.length==0 ){ 
+        if(usuario.fecha_nacimiento.length==0 ||usuario.direccion.length==0 || usuario.celular.length==0 ){ 
                 alert ('Debe completar todos los campos sobre la vacuna')
             }else{
                 confirm=true;
             }
     }
     if(confirm){
-        alert ('Se registró')
-
+        alert(usuario.fecha_nacimiento+' | '+usuario.direccion+' | '+usuario.celular+' | '+usuario.tipo_vacuna+' | '+usuario.fecha_vacuna+' | '+usuario.dosis)
     }
 
 

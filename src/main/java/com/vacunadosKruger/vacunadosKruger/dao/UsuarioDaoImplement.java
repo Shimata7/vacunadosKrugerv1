@@ -54,7 +54,21 @@ public class UsuarioDaoImplement implements UsuarioDao{
     @Override
     public boolean updateUsuario(Usuario usuario) {
         try{
-            entityManager.merge(usuario);
+            if(usuario.getCedula()==null){
+                Usuario usuarioOriginal = entityManager.find(Usuario.class, usuario.getId());
+                usuarioOriginal.setFecha_nacimiento(usuario.getFecha_nacimiento());
+                usuarioOriginal.setDireccion(usuario.getDireccion());
+                usuarioOriginal.setCelular(usuario.getCelular());
+                usuarioOriginal.setEstado_vacuna(usuario.getEstado_vacuna());
+                if(usuarioOriginal.getEstado_vacuna()){
+                    usuarioOriginal.setTipo_vacuna(usuario.getTipo_vacuna());
+                    usuarioOriginal.setFecha_vacuna(usuario.getFecha_vacuna());
+                    usuarioOriginal.setDosis(usuario.getDosis());
+                }
+                entityManager.merge(usuarioOriginal);
+            }else {
+                entityManager.merge(usuario);
+            }
         }catch(Exception e){
             return false;
         }

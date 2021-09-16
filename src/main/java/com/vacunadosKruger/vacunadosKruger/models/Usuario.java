@@ -25,6 +25,8 @@ public class Usuario {
     private Date fecha_nacimiento;
     @Column(name="direccion")
     private String direccion;
+    @Column(name="celular")
+    private Integer celular;
     @Column(name="estado_vacuna")
     private Boolean estado_vacuna;
     //@Column(name="tipo_vacuna_id")
@@ -132,6 +134,14 @@ public class Usuario {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public Integer getCelular() {
+        return celular;
+    }
+
+    public void setCelular(Integer celular) {
+        this.celular = celular;
     }
 
     public Boolean getEstado_vacuna() {
