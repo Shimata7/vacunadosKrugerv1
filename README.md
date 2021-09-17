@@ -8,6 +8,7 @@ Está construido en en java utilizando Springboot 2.5.4 y como base de datos Pos
 Para instalar la aplicación seguir los siguientes pasos:<br>
     <br>- Instalar Postgressql 13.0, crear una base de datos llamada "vacunación" y realizar un restore del siguiente archivo: [vacunacion.sql](https://drive.google.com/file/d/1Tr5tg1x5HjgUfDzq4ENpAJFtzHYMWNht/view?usp=sharing)<br>
     - Realizar la clonación del proyecto en el IDE preferido. Y en el archivo src/main/resources/application.properties cambiar la información de la base de datos para que coincida con su base de datos.<br>
+    <img src="https://i.ibb.co/ZX8Vx35/aplication-Configuration.jpg" alt="aplication-Configuration" border="0"><br>
     - Correr la aplicación.
     
 
@@ -138,7 +139,11 @@ letra del apellido más el número de cédula, la clave es el número de cédula
 ## Modelo de datos
 <img src="https://i.ibb.co/vLLj9W4/modelo-de-datos.jpg" alt="modelo-de-datos" border="0">
 
-Please make sure to update tests as appropriate.
+[vacunacion.sql](https://drive.google.com/file/d/1Tr5tg1x5HjgUfDzq4ENpAJFtzHYMWNht/view?usp=sharing)
+
+## Construcción
+
+Para construir la solución se utilizó en primera instancia el Spring Initializr, luego se creó el package models con las clases Rol, Tipo_vacuna y Usuario, se crearon sus atributos, sus getter y setters, junto con las notaciones de springboot para la persistencia de datos con hibernate. Se crearon los controladores de los modelos más el AthorizationController encargado del login. Se generaron los DAO respectivoss con la interface e implementación. Se crearon en las implementaciones las solicitudes a las bases de datos y funciones de validación de la información recibida. Se agregó un package Utils en el que se ubicó la clase JWUtil para la generación del token. Se escribieron las propiedades en el application.properties y durante el proceso se instalaron las dependencias necesarias que se pueden evidenciar en el pom.xml.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
