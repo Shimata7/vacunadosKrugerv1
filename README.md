@@ -149,3 +149,8 @@ Para construir la solución se utilizó en primera instancia el Spring Initializ
 
 ## Cualquier duda o comentario 
 Mauricio López - lopezsmauricio@gmail.com
+
+
+## Pruebas unitarias
+Las pruebas unitarias fueron realizadas con la herramienta Postman y en el siguiente archivo se evidencian los resultados.
+[Resultados](https://drive.google.com/file/d/181UdsrC637V9ctVV7j_rA6MX7m0Eb_MB/view?usp=sharing)
