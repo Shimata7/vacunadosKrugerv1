@@ -59,25 +59,25 @@ letra del apellido más el número de cédula, la clave es el número de cédula
 <br>
 <img src="https://i.ibb.co/NnntdmK/usuario-Por-Estado-Vacuna.jpg" alt="usuario-Por-Estado-Vacuna" border="0">
  <br>
- Se debe enviar el token en el header "Authorization". Y en la url el estado de vacuna que se busca true o false.<br>
+ Se debe enviar el token en el header "Authorization". Y en la url el estado de vacuna que se busca true o false. La respuesta es un listado de usuarios.<br>
 
 ### Obtener usuarios según tipo de vacuna
 <br>
 <img src="https://i.ibb.co/r54s7cy/usuario-Por-Tipo-Vacuna.jpg" alt="usuario-Por-Tipo-Vacuna" border="0">
  <br>
- Se debe enviar el token en el header "Authorization". Y en la url el id de vacuna que se busca.<br>
+ Se debe enviar el token en el header "Authorization". Y en la url el id de vacuna que se busca. La respuesta es un listado de usuarios.<br>
 
 ### Obtener usuarios según rango de fecha de vacunación
 <br>
 <img src="https://i.ibb.co/b1txwZk/usuarios-Por-Rango-Fechas.jpg" alt="usuarios-Por-Rango-Fechas" border="0">
  <br>
- Se debe enviar el token en el header "Authorization". Y en la url la fencha de inicio del rango y luego la fecha final. Ejemplo:/api/usuarios_rango_fecha/2021-09-01/2021-09-30.<br>
+ Se debe enviar el token en el header "Authorization". Y en la url la fencha de inicio del rango y luego la fecha final. Ejemplo:/api/usuarios_rango_fecha/2021-09-01/2021-09-30. La respuesta es un listado de usuarios.<br>
  
  ### Obtener usuario por su id
 <br>
 <img src="https://i.ibb.co/jyt3T05/usuario-Por-Id.jpg" alt="usuario-Por-Id" border="0">
  <br>
- Se debe enviar el token en el header "Authorization". Y en la url el id del usuario.<br>
+ Se debe enviar el token en el header "Authorization". Y en la url el id del usuario. La respuesta es un usuario.<br>
  
   ### Modificar usuario
 <br>
@@ -111,11 +111,13 @@ letra del apellido más el número de cédula, la clave es el número de cédula
   "usuario": "string"
 }
 ```
+La respuesta es un true si todo salió bien, si existen campos no válidos la respuesta es false.
+
    ### Eliminar usuario
 <br>
 <img src="https://i.ibb.co/h7qdfbr/eliminar-Usuario.jpg" alt="eliminar-Usuario" border="0">
  <br>
- Se debe enviar el token en el header "Authorization". Y en la url el id del usuario.<br>
+ Se debe enviar el token en el header "Authorization". Y en la url el id del usuario. La respuesta es un true si todo salió bien, si existe algún error la respuesta es false.<br>
  
  ### Registrar datos de vacunación por el empleado
 <br>
@@ -135,7 +137,7 @@ letra del apellido más el número de cédula, la clave es el número de cédula
         "dosis": 1
 }
 ```
-
+La respuesta es un true si todo salió bien, si existen campos no válidos la respuesta es false.<br>
 ## Modelo de datos
 <img src="https://i.ibb.co/vLLj9W4/modelo-de-datos.jpg" alt="modelo-de-datos" border="0">
 
@@ -145,5 +147,5 @@ letra del apellido más el número de cédula, la clave es el número de cédula
 
 Para construir la solución se utilizó en primera instancia el Spring Initializr, luego se creó el package models con las clases Rol, Tipo_vacuna y Usuario, se crearon sus atributos, sus getter y setters, junto con las notaciones de springboot para la persistencia de datos con hibernate. Se crearon los controladores de los modelos más el AthorizationController encargado del login. Se generaron los DAO respectivoss con la interface e implementación. Se crearon en las implementaciones las solicitudes a las bases de datos y funciones de validación de la información recibida. Se agregó un package Utils en el que se ubicó la clase JWUtil para la generación del token. Se escribieron las propiedades en el application.properties y durante el proceso se instalaron las dependencias necesarias que se pueden evidenciar en el pom.xml.
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+## Cualquier duda o comentario 
+Mauricio López - lopezsmauricio@gmail.com
