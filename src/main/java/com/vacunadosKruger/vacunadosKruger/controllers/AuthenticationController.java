@@ -23,16 +23,17 @@ public class AuthenticationController {
     //Comprueba que el usuario exista y se regresa el token JWT junto con el rol e id del usuario
     @RequestMapping(value= "api/login", method = RequestMethod.POST)
     public List<String> login(@RequestBody Usuario usuario){
-        Usuario userlog = usuarioDao.login(usuario).get(0);
         List<String> data = new ArrayList<>();
-        if(userlog != null){
+        try{
+            Usuario userlog = usuarioDao.login(usuario).get(0);
             String token = jwtUtil.create(userlog.getId().toString(),userlog.getUsuario());
             data.add(token);
             data.add(userlog.getRol().getRol());
             data.add(userlog.getId().toString());
-        }else{
-            return null;
+            return data;
+        }catch(Exception e){
+            return data;
         }
-        return data;
+
     }
 }

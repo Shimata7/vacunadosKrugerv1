@@ -152,7 +152,7 @@ public class UsuarioDaoImplement implements UsuarioDao{
                     result = entityManager.createQuery(query)
                     .setParameter("usuario",usuario.getUsuario())
                     .getResultList();
- //Comprueba que las claves hasheadas coincidan
+            //Comprueba que las claves hasheadas coincidan
             if(!result.isEmpty()) {
                 Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
                 confirm = argon2.verify(result.get(0).getClave(), usuario.getClave());
@@ -162,7 +162,12 @@ public class UsuarioDaoImplement implements UsuarioDao{
         }catch(Exception e){
             return null;
         }
-        return result;
+        if(confirm){
+            return result;
+        }else{
+            return null;
+        }
+
     }
     //Actualiza la información del usuario que deben brindar los empleados
     @Override
